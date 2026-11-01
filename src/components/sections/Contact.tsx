@@ -1,3 +1,5 @@
+import Image from "next/image";
+import portrait from "@/assets/marwa-frej.jpg";
 import { profile } from "@/content/profile";
 import { cvHref, isTodo, site } from "@/content/site";
 import { Magnetic } from "@/components/motion/Magnetic";
@@ -9,72 +11,88 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 import { Rich } from "@/components/ui/Rich";
-import { headingId } from "@/components/ui/SectionTitle";
+import { SectionLabel, headingId } from "@/components/ui/SectionTitle";
 
 export function Contact() {
   const { contact, ui } = site;
   const socials = [site.github, site.linkedin].filter((link) => !isTodo(link.href));
 
   return (
-    <section
-      id={contact.id}
-      aria-labelledby={headingId(contact)}
-      className="relative isolate scroll-mt-20 overflow-hidden py-24 lg:py-40"
-    >
-      <div
-        aria-hidden
-        className="absolute -bottom-[30%] left-1/2 -z-10 size-[min(110vw,80rem)] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,var(--halo),transparent)] opacity-70"
-      />
+    <section id={contact.id} aria-labelledby={headingId(contact)} className="scroll-mt-24 py-16 lg:py-24">
       <Container>
-        <p className="eyebrow border-t border-line pt-5 text-muted">
-          <span className="text-fg">{contact.index}</span> — {contact.label}
-        </p>
+        <div className="relative isolate overflow-hidden rounded-[var(--radius-panel)] border border-accent/10 bg-[linear-gradient(160deg,var(--accent-tint)_0%,var(--accent-soft)_55%,var(--sand)_100%)] px-5 py-16 text-center sm:px-10 lg:px-16 lg:py-24">
+          <div
+            aria-hidden
+            className="absolute -top-40 left-1/2 -z-10 size-[44rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(255_255_255/0.75),transparent)]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_60%_55%_at_50%_45%,black,transparent)] bg-[radial-gradient(rgb(140_29_64/0.16)_1px,transparent_1px)] [background-size:24px_24px]"
+          />
 
-        <SplitHeading as="h2" id={headingId(contact)} className="mt-10 max-w-[13ch] font-serif text-display text-fg lg:mt-14">
-          <Rich text={contact.title} />
-        </SplitHeading>
-
-        <div className="grid-editorial mt-12 gap-y-8 lg:mt-16">
-          <Reveal className="col-span-12 md:col-span-8 lg:col-span-5">
-            <p className="text-lead text-muted">{contact.lead}</p>
+          <Reveal className="flex flex-col items-center gap-5">
+            <span className="relative size-20 overflow-hidden rounded-full shadow-lift ring-4 ring-surface">
+              <Image src={portrait} alt="" fill sizes="80px" className="object-cover object-top" />
+            </span>
+            <SectionLabel index={contact.index} label={contact.label} />
           </Reveal>
-          <Reveal className="col-span-12 md:col-span-4 md:justify-self-end lg:col-span-4 lg:col-start-9">
-            <Badge pulse>{profile.availability.label}</Badge>
+
+          <SplitHeading
+            as="h2"
+            id={headingId(contact)}
+            className="mx-auto mt-8 max-w-[16ch] text-display font-semibold text-fg"
+          >
+            <Rich text={contact.title} />
+          </SplitHeading>
+
+          <Reveal>
+            <p className="mx-auto mt-6 max-w-xl text-lead text-muted">{contact.lead}</p>
           </Reveal>
-        </div>
 
-        <Reveal className="mt-12 lg:mt-16">
-          <p className="eyebrow mb-2 text-muted">{contact.emailLabel}</p>
-          <CopyEmail email={site.email} />
-        </Reveal>
+          <Reveal className="mt-10">
+            <p className="sr-only">{contact.emailLabel}</p>
+            <CopyEmail email={site.email} />
+          </Reveal>
 
-        <Reveal className="mt-6 flex flex-wrap items-center gap-3">
-          <Magnetic>
-            <Button href={`mailto:${site.email}`} size="lg" icon={<Arrow direction="up-right" />}>
-              {ui.writeEmail}
-            </Button>
-          </Magnetic>
-          {socials.map((link) => (
-            <Magnetic key={link.label}>
-              <Button href={link.href} variant="outline" size="lg" external icon={<Arrow direction="up-right" />}>
-                {link.label}
+          <Reveal className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            <Magnetic strength={0.2}>
+              <Button href={`mailto:${site.email}`} size="lg" icon={<Arrow direction="up-right" />}>
+                {ui.writeEmail}
               </Button>
             </Magnetic>
-          ))}
-          {site.showPhone ? (
-            <Button href={site.phone.href} variant="outline" size="lg">
-              {site.phone.display}
+            {socials.map((link) => (
+              <Button
+                key={link.label}
+                href={link.href}
+                variant="secondary"
+                size="lg"
+                external
+                icon={<Arrow direction="up-right" />}
+              >
+                {link.label}
+              </Button>
+            ))}
+            {site.showPhone ? (
+              <Button href={site.phone.href} variant="secondary" size="lg">
+                {site.phone.display}
+              </Button>
+            ) : null}
+            <Button
+              href={cvHref}
+              variant="secondary"
+              size="lg"
+              download={site.cvPdfUrl ? true : undefined}
+            >
+              {ui.downloadCv}
             </Button>
-          ) : null}
-          <Button
-            href={cvHref}
-            variant="ghost"
-            className="ml-2 underline decoration-line-strong underline-offset-[6px] hover:decoration-indigo-ink"
-            download={site.cvPdfUrl ? true : undefined}
-          >
-            {ui.downloadCv}
-          </Button>
-        </Reveal>
+          </Reveal>
+
+          <Reveal className="mt-10 flex justify-center">
+            <Badge pulse>
+              {profile.availability.label} — {profile.location.display}
+            </Badge>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );

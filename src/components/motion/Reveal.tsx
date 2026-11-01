@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ElementType, type ReactNode } from "react";
+import { useRef, type ElementType, type HTMLAttributes, type ReactNode } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { media, reveal } from "@/lib/motion";
 
@@ -11,10 +11,10 @@ type RevealProps = {
   /** Animate direct children one after another instead of the wrapper. */
   stagger?: boolean;
   delay?: number;
-};
+} & Omit<HTMLAttributes<HTMLElement>, "children" | "className">;
 
-/** Sober scroll reveal: opacity + 24px rise, power3.out, once. */
-export function Reveal({ children, as = "div", className, stagger = false, delay = 0 }: RevealProps) {
+/** Scroll reveal: opacity + rise on an expo ease, once. */
+export function Reveal({ children, as = "div", className, stagger = false, delay = 0, ...rest }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
   const Tag: ElementType = as;
 
@@ -31,6 +31,7 @@ export function Reveal({ children, as = "div", className, stagger = false, delay
           ease: reveal.ease,
           delay,
           stagger: stagger ? reveal.stagger : 0,
+          clearProps: "transform",
           scrollTrigger: { trigger: el, start: reveal.start, once: true },
         });
       });
@@ -40,7 +41,7 @@ export function Reveal({ children, as = "div", className, stagger = false, delay
   );
 
   return (
-    <Tag ref={ref} className={className}>
+    <Tag ref={ref} className={className} {...rest}>
       {children}
     </Tag>
   );

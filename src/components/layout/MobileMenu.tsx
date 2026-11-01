@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { profile } from "@/content/profile";
 import { cvHref, isTodo, site } from "@/content/site";
-import { Container } from "@/components/ui/Container";
+import { Arrow } from "@/components/ui/Arrow";
 import { lockScroll, unlockScroll } from "@/lib/scroll";
 import { media } from "@/lib/motion";
 import { cn } from "@/lib/cn";
@@ -14,6 +13,7 @@ type MobileMenuProps = {
   onClose: (restoreFocus?: boolean) => void;
 };
 
+/** Card that drops under the header on small screens. */
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -48,63 +48,77 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const socials = [site.github, site.linkedin].filter((link) => !isTodo(link.href));
 
   return (
-    <div
-      id="mobile-menu"
-      ref={panelRef}
-      inert={!open}
-      data-print-hidden
-      className={cn(
-        "fixed inset-0 z-40 bg-ink transition-opacity duration-500 ease-out-expo lg:hidden",
-        open ? "opacity-100" : "pointer-events-none opacity-0",
-      )}
-    >
-      <Container className="flex h-full flex-col justify-between pt-24 pb-8">
+    <>
+      <div
+        aria-hidden
+        data-print-hidden
+        onClick={() => onClose(false)}
+        className={cn(
+          "fixed inset-0 z-40 bg-fg/15 backdrop-blur-[2px] transition-opacity duration-500 lg:hidden",
+          open ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
+      />
+      <div
+        id="mobile-menu"
+        ref={panelRef}
+        inert={!open}
+        data-print-hidden
+        className={cn(
+          "fixed inset-x-3 top-[4.75rem] z-50 origin-top rounded-[1.75rem] border border-line bg-surface p-3 shadow-lift transition-[opacity,transform] duration-500 ease-out-expo sm:inset-x-8 lg:hidden",
+          open ? "translate-y-0 scale-100 opacity-100" : "pointer-events-none -translate-y-3 scale-[0.97] opacity-0",
+        )}
+      >
         <nav aria-label={site.ui.menu}>
-          <ol className="border-t border-line">
+          <ol>
             {site.nav.map((item, i) => (
-              <li key={item.href} className="overflow-hidden border-b border-line">
+              <li key={item.href}>
                 <Link
                   href={item.href}
                   onClick={() => onClose(false)}
                   className={cn(
-                    "flex items-baseline gap-5 py-4 transition-transform duration-700 ease-out-expo",
-                    open ? "translate-y-0" : "translate-y-full",
+                    "flex items-center justify-between rounded-2xl px-4 py-3.5 transition-[background-color,opacity,transform] duration-500 ease-out-expo hover:bg-surface-2",
+                    open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0",
                   )}
-                  style={{ transitionDelay: open ? `${80 + i * 45}ms` : "0ms" }}
+                  style={{ transitionDelay: open ? `${60 + i * 35}ms` : "0ms" }}
                 >
-                  <span className="eyebrow w-6 text-muted">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="font-serif text-[clamp(2.25rem,9vw,3.5rem)] leading-none text-fg">
+                  <span className="font-display text-[1.75rem] leading-none font-semibold tracking-[-0.03em] text-fg">
                     {item.label}
                   </span>
+                  <span className="text-xs font-bold text-accent">{String(i + 1).padStart(2, "0")}</span>
                 </Link>
               </li>
             ))}
           </ol>
         </nav>
 
-        <div
-          className={cn(
-            "flex flex-col gap-4 transition-opacity duration-700",
-            open ? "opacity-100 delay-300" : "opacity-0",
-          )}
-        >
-          <a href={`mailto:${site.email}`} className="text-lg break-all text-fg underline-offset-4 hover:underline">
+        <div className="mt-2 flex flex-col gap-3 rounded-[1.25rem] bg-accent-tint p-4">
+          <a href={`mailto:${site.email}`} className="text-[0.9375rem] font-semibold break-all text-accent">
             {site.email}
           </a>
-          <div className="eyebrow flex flex-wrap gap-x-6 gap-y-2 text-muted">
+          <div className="flex flex-wrap gap-2">
             {socials.map((link) => (
-              <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="hover:text-fg">
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3.5 py-2 text-sm font-semibold text-fg"
+              >
                 {link.label}
+                <Arrow direction="up-right" className="size-3" />
                 <span className="sr-only"> {site.ui.opensInNewTab}</span>
               </a>
             ))}
-            <Link href={cvHref} onClick={() => onClose(false)} className="hover:text-fg">
+            <Link
+              href={cvHref}
+              onClick={() => onClose(false)}
+              className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3.5 py-2 text-sm font-semibold text-fg"
+            >
               {site.ui.downloadCv}
             </Link>
-            <span>{profile.location.display}</span>
           </div>
         </div>
-      </Container>
-    </div>
+      </div>
+    </>
   );
 }
