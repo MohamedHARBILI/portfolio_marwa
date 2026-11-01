@@ -16,8 +16,15 @@ export const skillGroups: readonly SkillGroup[] = [
   { id: "tools", label: "Outils", items: ["Git", "GitHub", "VS Code", "Jira", "Figma"] },
   { id: "office", label: "Bureautique & création", items: ["Excel", "Word", "PowerPoint", "Canva"] },
   {
+    id: "soft",
+    label: "Savoir-être",
+    items: ["Leadership", "Esprit d'équipe", "Esprit critique", "Négociation", "Adaptabilité"],
+    tone: "soft",
+  },
+  {
     id: "payments",
     label: "Domaine des paiements",
+    note: "Notions acquises pendant mon stage au sein de l'équipe Risques & Fraude de VPS.",
     items: [
       "PSP",
       "3-D Secure",
@@ -27,12 +34,6 @@ export const skillGroups: readonly SkillGroup[] = [
       "Prévention de la fraude",
     ],
     tone: "accent",
-  },
-  {
-    id: "soft",
-    label: "Savoir-être",
-    items: ["Leadership", "Esprit d'équipe", "Esprit critique", "Négociation", "Adaptabilité"],
-    tone: "soft",
   },
 ];
 

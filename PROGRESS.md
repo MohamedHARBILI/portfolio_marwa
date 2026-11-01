@@ -1,12 +1,12 @@
 # PROGRESS — Portfolio Marwa Frej
 
-**Prochaine action : Commit du contenu typé, puis construire toutes les sections en statique (Hero, About, Experience, PaymentFlow, Projects, Skills, Education, Languages, Contact).**
+**Prochaine action : Motion — écrire IntroHook (intro « Compile ») et le brancher sur la page d'accueil, puis vérifier visuellement (navigateur headless) Hero, PaymentFlow, Projets.**
 
 ## Checklist
 - [x] Initialisation Next.js, réglages, CLAUDE.md, PROGRESS.md, git, dépendances, arborescence
 - [x] Design system : tokens, polices, globals.css, composants ui/, monogramme, Header/Footer
-- [ ] Contenu typé dans src/content à partir du CV (réécrit et vérifié)
-- [ ] Toutes les sections en statique, responsive
+- [x] Contenu typé dans src/content à partir du CV (réécrit et vérifié)
+- [x] Toutes les sections en statique, responsive
 - [ ] Motion : SmoothScroll, IntroHook, Hero, Reveal, PaymentFlow, Cursor, Magnetic
 - [ ] Pages projets, page CV imprimable, SEO, accessibilité, performance
 - [ ] QA finale : lint/types/build, relecture orthographique, 5 largeurs, reduced-motion, README, liste « À fournir »

@@ -21,6 +21,20 @@ export const profile: Profile = {
     eyebrow: "Portfolio — 2026",
     lead: "Développeuse web full stack, je construis des applications complètes, de l'interface en React à la logique serveur en Laravel. En stage, j'ai découvert les coulisses des paiements en ligne.",
   },
+  intro: {
+    code: [
+      { text: "const ", kind: "keyword" },
+      { text: "marwa", kind: "name" },
+      { text: " = ", kind: "punct" },
+      { text: "new ", kind: "keyword" },
+      { text: "Developer", kind: "type" },
+      { text: "({ ", kind: "punct" },
+      { text: "stack", kind: "prop" },
+      { text: ": ", kind: "punct" },
+      { text: "\"full\"", kind: "string" },
+      { text: " });", kind: "punct" },
+    ],
+  },
   about: {
     id: "a-propos",
     index: "01",

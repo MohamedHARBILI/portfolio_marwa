@@ -22,6 +22,7 @@ export const projects: readonly Project[] = [
     slug: "site-de-vente-en-ligne",
     index: "01",
     title: "Site web de vente en ligne",
+    shortTitle: "Vente en ligne",
     kind: "Projet web",
     urlLabel: "vente-en-ligne",
     summary:
@@ -45,6 +46,7 @@ export const projects: readonly Project[] = [
     slug: "plateforme-anciens-camarades",
     index: "02",
     title: "Plateforme de mise en relation entre anciens camarades",
+    shortTitle: "Anciens camarades",
     kind: "Hackathon",
     urlLabel: "anciens-camarades",
     summary:

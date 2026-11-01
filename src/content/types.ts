@@ -99,6 +99,13 @@ export interface Fact {
   readonly label: string;
 }
 
+export type CodeTokenKind = "keyword" | "name" | "type" | "prop" | "string" | "punct";
+
+export interface CodeToken {
+  readonly text: string;
+  readonly kind: CodeTokenKind;
+}
+
 export interface Profile {
   readonly firstName: string;
   readonly lastName: string;
@@ -114,6 +121,8 @@ export interface Profile {
   };
   readonly availability: { readonly label: string; readonly detail: string };
   readonly hero: { readonly eyebrow: string; readonly lead: string };
+  /** The line of code typed by the intro before it resolves into the name. */
+  readonly intro: { readonly code: readonly CodeToken[] };
   readonly about: SectionMeta & {
     readonly bio: readonly string[];
     readonly facts: readonly Fact[];
@@ -159,6 +168,8 @@ export interface Project {
   readonly slug: string;
   readonly index: string;
   readonly title: string;
+  /** Used inside the browser-window visual. */
+  readonly shortTitle: string;
   readonly kind: string;
   readonly urlLabel: string;
   readonly summary: string;
@@ -188,6 +199,7 @@ export interface SkillGroup {
   readonly label: string;
   readonly items: readonly string[];
   readonly tone?: "default" | "accent" | "soft";
+  readonly note?: string;
 }
 
 export interface EducationEntry {
