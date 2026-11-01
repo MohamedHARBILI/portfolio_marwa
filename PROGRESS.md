@@ -1,6 +1,6 @@
 # PROGRESS — Portfolio Marwa Frej
 
-**Prochaine action : Vérifier le motion en navigateur (PaymentFlow épinglé, aperçu projets) et le mobile 360 px, puis pages projets /projets/[slug], page /cv imprimable, SEO (metadata, OG, JSON-LD, sitemap, robots, icon), not-found.**
+**Prochaine action : QA finale — relecture orthographique de tous les textes de src/content, README, liste finale « À fournir », puis cocher les deux dernières lignes et commit final.**
 
 ## Checklist
 - [x] Initialisation Next.js, réglages, CLAUDE.md, PROGRESS.md, git, dépendances, arborescence

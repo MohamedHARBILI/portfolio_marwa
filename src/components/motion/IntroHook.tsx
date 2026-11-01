@@ -18,7 +18,7 @@ const tokenColors: Record<CodeTokenKind, string> = {
   punct: "text-muted",
 };
 
-const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]<>/=+*#$&%";
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 const SKIP_KEYS = new Set([" ", "Escape", "Enter", "ArrowDown", "PageDown", "End", "Tab"]);
 
 /**
@@ -91,9 +91,8 @@ export function IntroHook() {
       tl.to(q("[data-intro-caret]"), { opacity: 1, duration: 0.01 }, typingEnd)
         .to(q("[data-intro-bar]"), { scaleX: 1, duration: 1.95, ease: "power2.inOut" }, 0.05)
         .to(q("[data-intro-code]"), { opacity: 0, y: -12, duration: 0.3, ease: "power2.in" }, 1.0)
-        .set(names, { opacity: 1 }, 1.15)
+        .to(names, { opacity: 1, duration: 0.25 }, 1.15)
         .to(scramble, { p: 1, duration: 0.75, ease: "none", onUpdate: renderName }, 1.15)
-        .from(names, { y: 18, duration: 0.75, ease: "expo.out" }, 1.15)
         .to(q("[data-intro-meta]"), { opacity: 0, duration: 0.25 }, 1.95)
         .addLabel("curtain", 2.05)
         .set(q("[data-intro-backdrop]"), { opacity: 0 }, "curtain")
@@ -178,7 +177,7 @@ function IntroContent() {
         </p>
         <p
           data-intro-name
-          className="col-start-1 row-start-1 font-serif text-display whitespace-nowrap text-fg opacity-0"
+          className="col-start-1 row-start-1 h-[1em] w-full justify-self-stretch text-center font-serif text-display whitespace-nowrap text-fg opacity-0"
         >
           {profile.fullName}
         </p>

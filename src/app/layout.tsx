@@ -9,13 +9,13 @@ import "@/styles/globals.css";
 const serif = Instrument_Serif({
   weight: "400",
   style: ["normal", "italic"],
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-instrument-serif",
   display: "swap",
 });
 
 const sans = Geist({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-geist-sans",
   display: "swap",
 });
@@ -24,6 +24,7 @@ const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
