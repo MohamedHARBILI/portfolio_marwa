@@ -1,10 +1,10 @@
 # PROGRESS — Portfolio Marwa Frej
 
-**Prochaine action : Design system (tokens, polices, globals.css, composants ui/, monogramme, Header/Footer).**
+**Prochaine action : Commit du contenu typé, puis construire toutes les sections en statique (Hero, About, Experience, PaymentFlow, Projects, Skills, Education, Languages, Contact).**
 
 ## Checklist
 - [x] Initialisation Next.js, réglages, CLAUDE.md, PROGRESS.md, git, dépendances, arborescence
-- [ ] Design system : tokens, polices, globals.css, composants ui/, monogramme, Header/Footer
+- [x] Design system : tokens, polices, globals.css, composants ui/, monogramme, Header/Footer
 - [ ] Contenu typé dans src/content à partir du CV (réécrit et vérifié)
 - [ ] Toutes les sections en statique, responsive
 - [ ] Motion : SmoothScroll, IntroHook, Hero, Reveal, PaymentFlow, Cursor, Magnetic
@@ -17,6 +17,9 @@
 - Photo : non extractible en fichier exploitable → design 100 % typographique (monogramme MF).
 - Localisation publique : « Casablanca, Maroc ».
 - Téléphone masqué (`showPhone: false`).
+- Routes : groupe `(site)` (header, footer, smooth scroll, curseur) ; `/cv` hors du groupe pour une page CV sans animation ni navigation.
+- Thème sombre par défaut (dark-first), bascule clair/sombre dans le header, mémorisée en localStorage.
+- Le curseur personnalisé complète le curseur natif (qui reste visible) pour ne pas nuire à l'utilisabilité.
 
 ## À fournir par le client
 - URL LinkedIn (`TODO_LINKEDIN_URL` dans `src/content/site.ts`).

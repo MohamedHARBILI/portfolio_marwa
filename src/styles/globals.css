@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Ink & Signal — design tokens (dark-first, light via data-theme)
+------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+  --ink: #0b0b12;
+  --surface: #13131d;
+  --surface-2: #1b1b28;
+  --fg: #f3efe6;
+  --muted: #9c98a6;
+  --line: rgb(243 239 230 / 0.12);
+  --line-strong: rgb(243 239 230 / 0.28);
+  --indigo: #2b2bd9;
+  --indigo-ink: #9494ff;
+  --garnet: #9e1f45;
+  --garnet-ink: #ef7397;
+  --on-accent: #f3efe6;
+  --halo: rgb(43 43 217 / 0.3);
+  --grain-opacity: 0.055;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #f6f3ec;
+  --surface: #ede8dd;
+  --surface-2: #e4ddcf;
+  --fg: #14141c;
+  --muted: #56525e;
+  --line: rgb(20 20 28 / 0.13);
+  --line-strong: rgb(20 20 28 / 0.32);
+  --indigo-ink: #2b2bd9;
+  --garnet-ink: #9e1f45;
+  --halo: rgb(43 43 217 / 0.14);
+  --grain-opacity: 0.07;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-indigo: var(--indigo);
+  --color-indigo-ink: var(--indigo-ink);
+  --color-garnet: var(--garnet);
+  --color-garnet-ink: var(--garnet-ink);
+  --color-on-accent: var(--on-accent);
+
+  --font-serif: var(--font-instrument-serif), "Times New Roman", serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@theme {
+  /* Fluid type scale */
+  --text-mega: clamp(4rem, 0.9rem + 14vw, 14rem);
+  --text-mega--line-height: 0.84;
+  --text-mega--letter-spacing: -0.03em;
+  --text-display: clamp(2.75rem, 0.9rem + 7vw, 8.5rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.025em;
+  --text-h2: clamp(2.25rem, 1.15rem + 4.2vw, 5.5rem);
+  --text-h2--line-height: 0.98;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.625rem, 1.15rem + 1.5vw, 2.625rem);
+  --text-h3--line-height: 1.04;
+  --text-h3--letter-spacing: -0.01em;
+  --text-lead: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+  --text-lead--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --breakpoint-xs: 30rem;
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+@layer base {
+  html {
+    background-color: var(--ink);
+    color: var(--fg);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100svh;
+    background-color: var(--ink);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--indigo);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--indigo-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+}
+
+/* Mono eyebrow labels: « 01 — EXPÉRIENCE » */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* 12-column editorial grid */
+@utility grid-editorial {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+}
+
+/* ------------------------------------------------------------------
+   Grain overlay (static SVG noise)
+------------------------------------------------------------------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ------------------------------------------------------------------
+   Lenis + scroll lock
+------------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+html.scroll-locked {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------
+   Intro overlay states
+------------------------------------------------------------------- */
+html[data-intro="done"] [data-intro-overlay] {
+  display: none;
+}
+
+[data-intro-overlay] {
+  /* Failsafe: never trap the page if JavaScript is late or broken. */
+  animation: intro-failsafe 0.4s ease 6s forwards;
+}
+
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ------------------------------------------------------------------
+   SplitText line masks (room for serif descenders and italics)
+------------------------------------------------------------------- */
+.split-line-mask {
+  padding: 0 0.06em 0.12em;
+  margin: 0 -0.06em -0.12em;
+}
+
+/* ------------------------------------------------------------------
+   Small keyframes
+------------------------------------------------------------------- */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Reduced motion
+------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-intro-overlay] {
+    display: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Print (used by /cv)
+------------------------------------------------------------------- */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #14141c !important;
+  }
+
+  body::after,
+  [data-print-hidden] {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
