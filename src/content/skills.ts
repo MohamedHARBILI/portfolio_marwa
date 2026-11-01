@@ -6,7 +6,7 @@ export const skillsSection: SectionMeta = {
   label: "Compétences",
   title: ["Une boîte à outils ", { em: "full stack" }, "."],
   intro:
-    "Les langages, frameworks et outils avec lesquels je travaille, et les qualités que j'apporte à une équipe.",
+    "Les langages, frameworks et outils avec lesquels je travaille, et les qualités que j’apporte à une équipe.",
 };
 
 export const skillGroups: readonly SkillGroup[] = [
@@ -18,13 +18,13 @@ export const skillGroups: readonly SkillGroup[] = [
   {
     id: "soft",
     label: "Savoir-être",
-    items: ["Leadership", "Esprit d'équipe", "Esprit critique", "Négociation", "Adaptabilité"],
+    items: ["Leadership", "Esprit d’équipe", "Esprit critique", "Négociation", "Adaptabilité"],
     tone: "soft",
   },
   {
     id: "payments",
     label: "Domaine des paiements",
-    note: "Notions acquises pendant mon stage au sein de l'équipe Risques & Fraude de VPS.",
+    note: "Notions acquises pendant mon stage au sein de l’équipe Risques & Fraude de VPS.",
     items: [
       "PSP",
       "3-D Secure",

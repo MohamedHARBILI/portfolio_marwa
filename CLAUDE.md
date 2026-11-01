@@ -27,12 +27,12 @@
 | Token | Sombre | Clair |
 |---|---|---|
 | `--ink` (fond) | #0B0B12 | #F6F3EC |
-| `--surface` | #13131D | #ECE7DC |
+| `--surface` | #13131D | #EDE8DD |
 | `--fg` (ivoire) | #F3EFE6 | #14141C |
-| `--muted` | #9C98A6 | #5A5664 |
+| `--muted` | #9C98A6 | #56525E |
 | `--line` | rgba(243,239,230,.12) | rgba(20,20,28,.14) |
-| `--indigo` | #2B2BD9 (texte : #8B8BFF) | #2B2BD9 |
-| `--garnet` | #9E1F45 (texte : #E0577E) | #9E1F45 |
+| `--indigo` / `--indigo-ink` (texte) | #2B2BD9 / #9494FF | #2B2BD9 / #2B2BD9 |
+| `--garnet` / `--garnet-ink` (texte) | #9E1F45 / #EF7397 | #9E1F45 / #9E1F45 |
 
 - Typo : titres Instrument Serif (mots-clés en italique), corps Geist, étiquettes Geist Mono majuscules espacées (« 01 — EXPÉRIENCE »). Échelle fluide `clamp()`.
 - Coins peu arrondis (2–4px), filets 1px, grille 12 colonnes, grain SVG léger.
