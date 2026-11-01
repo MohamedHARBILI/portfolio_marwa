@@ -7,10 +7,12 @@ import { Languages } from "@/components/sections/Languages";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { IntroHook } from "@/components/motion/IntroHook";
+import { PersonJsonLd } from "@/components/layout/PersonJsonLd";
 
 export default function HomePage() {
   return (
     <>
+      <PersonJsonLd />
       <IntroHook />
       <Hero />
       <About />
