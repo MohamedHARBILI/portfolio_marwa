@@ -6,14 +6,15 @@
 1. Portfolio personnel premium de **Marwa Frej**, Développeuse Web Full Stack (Casablanca).
 2. Front-end uniquement, 100 % statique (SSG), aucun backend ni API route.
 3. Le CV est la source de vérité : aucun fait, chiffre, lien ou résultat inventé.
-4. Direction artistique « Ink & Signal » : éditorial, sombre, précis, chaleureux.
-5. Signature : intro « Compile » + schéma animé « PaymentFlow » (stage Risques & Fraude).
+4. Direction artistique « Bordeaux & Crème » (v2) : clair uniquement, premium, cartes bento, portrait en arche. Le bordeaux reprend le blazer de la photo.
+5. Signature : entrée du hero en CSS (lignes masquées, portrait révélé, puces flottantes) + schéma animé « PaymentFlow » (stage Risques & Fraude).
 
 ## Stack
 - Next.js 16 (App Router, Turbopack), TypeScript strict, Tailwind CSS v4 (tokens via `@theme` dans `src/styles/globals.css`)
 - `clsx` + `tailwind-merge` (`src/lib/cn.ts`)
 - GSAP + ScrollTrigger + SplitText via `@gsap/react` (`useGSAP`), Lenis (smooth scroll). Aucune autre lib d'animation.
-- Polices `next/font/google` : Instrument Serif (titres), Geist (texte), Geist Mono (labels).
+- Polices `next/font/google` : Bricolage Grotesque (titres, `font-display`), Manrope (texte, `font-sans`).
+- Photo : `src/assets/marwa-frej.jpg` (extraite du CV), toujours via `next/image` (import statique).
 
 ## Conventions
 - Server Components par défaut ; `"use client"` uniquement pour l'interactif.
@@ -23,17 +24,18 @@
 - Commits : Conventional Commits en anglais, PROGRESS.md mis à jour dans le même commit. Jamais de mention de Claude/Anthropic.
 - Vérifs : `npm run lint`, `npx tsc --noEmit`, `npm run build`.
 
-## Tokens de design
-| Token | Sombre | Clair |
+## Tokens de design (thème clair uniquement)
+| Token | Valeur | Usage |
 |---|---|---|
-| `--ink` (fond) | #0B0B12 | #F6F3EC |
-| `--surface` | #13131D | #EDE8DD |
-| `--fg` (ivoire) | #F3EFE6 | #14141C |
-| `--muted` | #9C98A6 | #56525E |
-| `--line` | rgba(243,239,230,.12) | rgba(20,20,28,.14) |
-| `--indigo` / `--indigo-ink` (texte) | #2B2BD9 / #9494FF | #2B2BD9 / #2B2BD9 |
-| `--garnet` / `--garnet-ink` (texte) | #9E1F45 / #EF7397 | #9E1F45 / #9E1F45 |
+| `--bg` | #F7F3EE | fond crème |
+| `--surface` / `--surface-2` | #FFFFFF / #F1EBE3 | cartes / puces |
+| `--fg` / `--muted` | #211A1D / #675D62 | texte / texte secondaire |
+| `--line` / `--line-strong` | rgba(33,26,29,.09) / .18 | filets |
+| `--accent` / `--accent-strong` | #8C1D40 / #6F1431 | bordeaux (boutons, mots-clés) |
+| `--accent-soft` / `--accent-tint` | #F6E2E7 / #FBF1F3 | rose poudré (panneaux) |
+| `--mist` / `--sand` | #E7EDF4 / #EFE5D8 | panneaux secondaires |
+| `--success` | #1F8A5B | pastille « disponible » |
 
-- Typo : titres Instrument Serif (mots-clés en italique), corps Geist, étiquettes Geist Mono majuscules espacées (« 01 — EXPÉRIENCE »). Échelle fluide `clamp()`.
-- Coins peu arrondis (2–4px), filets 1px, grille 12 colonnes, grain SVG léger.
-- Easing : `power3.out` ; révélations opacity + y 24px.
+- Typo : titres Bricolage Grotesque semi-gras, interlettrage serré ; segments `{ em }` en bordeaux (pas d'italique). Échelle fluide `clamp()` (`text-hero`, `text-display`, `text-h2`, `text-h3`, `text-lead`).
+- Cartes `card` (blanc, filet, ombre douce, rayon 28px), panneaux rayon 36px, boutons en pilule.
+- Mouvement : entrée du hero en CSS (`data-enter`), révélations GSAP (opacity + y 36px, `expo.out`), titres SplitText, parallaxe légère des maquettes, bandeau de technologies en CSS. Pas d'intro plein écran ni de curseur personnalisé.
