@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { site } from "@/content/site";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "outline" | "ghost";
+type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 type ButtonProps = {
@@ -18,18 +18,25 @@ type ButtonProps = {
 } & Omit<ComponentPropsWithoutRef<"a">, "href" | "children" | "className">;
 
 const base =
-  "group/button relative isolate inline-flex items-center justify-center gap-3 overflow-hidden rounded-[3px] font-medium whitespace-nowrap transition-colors duration-500 ease-out-expo";
+  "group/button relative inline-flex items-center justify-center gap-3 rounded-full font-semibold whitespace-nowrap transition-[background-color,color,border-color,box-shadow,transform] duration-500 ease-out-expo active:scale-[0.97]";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-indigo text-on-accent hover:text-ink",
-  outline: "border border-line-strong text-fg hover:border-fg hover:text-ink",
-  ghost: "text-fg hover:text-indigo-ink",
+  primary:
+    "bg-accent text-on-accent shadow-[0_10px_30px_-12px_rgb(140_29_64/0.65)] hover:bg-accent-strong hover:shadow-[0_16px_40px_-14px_rgb(140_29_64/0.75)]",
+  secondary: "border border-line-strong bg-surface text-fg shadow-soft hover:border-fg/40 hover:bg-surface",
+  ghost: "text-fg hover:text-accent",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-10 px-4 text-sm",
+  sm: "h-10 px-5 text-sm",
   md: "h-12 px-6 text-[0.9375rem]",
-  lg: "h-14 px-8 text-base",
+  lg: "h-14 px-7 text-base",
+};
+
+const iconWrap: Record<Variant, string> = {
+  primary: "bg-white/15",
+  secondary: "bg-surface-2",
+  ghost: "",
 };
 
 function isInternal(href: string) {
@@ -46,17 +53,29 @@ export function Button({
   className,
   ...rest
 }: ButtonProps) {
-  const classes = cn(base, variants[variant], sizes[size], variant === "ghost" && "px-0", className);
+  const classes = cn(
+    base,
+    variants[variant],
+    sizes[size],
+    icon && variant !== "ghost" && "pr-2",
+    variant === "ghost" && "h-auto px-0",
+    className,
+  );
   const content = (
     <>
-      {variant === "ghost" ? null : (
+      <span>{children}</span>
+      {icon ? (
         <span
           aria-hidden
-          className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-fg transition-transform duration-500 ease-out-expo group-hover/button:scale-y-100"
-        />
-      )}
-      <span>{children}</span>
-      {icon}
+          className={cn(
+            "grid place-items-center overflow-hidden rounded-full transition-transform duration-500 ease-out-expo group-hover/button:translate-x-0.5",
+            variant === "ghost" ? "size-5" : size === "sm" ? "size-7" : "size-9",
+            iconWrap[variant],
+          )}
+        >
+          {icon}
+        </span>
+      ) : null}
       {external ? <span className="sr-only"> {site.ui.opensInNewTab}</span> : null}
     </>
   );

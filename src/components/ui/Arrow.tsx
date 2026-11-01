@@ -21,7 +21,7 @@ export function Arrow({ direction = "right", className }: ArrowProps) {
       aria-hidden
       className={cn("size-4 shrink-0", rotations[direction], className)}
     >
-      <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" strokeWidth={1.4} strokeLinecap="square" />
+      <path d="M2.5 8h11M9.5 4l4 4-4 4" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

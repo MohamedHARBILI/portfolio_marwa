@@ -13,7 +13,7 @@ export function Container<T extends ElementType = "div">({
   const Component: ElementType = as ?? "div";
   return (
     <Component
-      className={cn("mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-10 2xl:px-14", className)}
+      className={cn("mx-auto w-full max-w-[1320px] px-4 sm:px-8 lg:px-12", className)}
       {...props}
     />
   );

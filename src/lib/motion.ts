@@ -14,11 +14,11 @@ export const duration = {
 } as const;
 
 export const reveal = {
-  y: 24,
-  duration: 0.9,
-  ease: ease.out,
-  stagger: 0.08,
-  start: "top 86%",
+  y: 36,
+  duration: 1.1,
+  ease: ease.expo,
+  stagger: 0.09,
+  start: "top 88%",
 } as const;
 
 export const media = {

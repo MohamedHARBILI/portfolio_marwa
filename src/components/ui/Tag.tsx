@@ -8,8 +8,8 @@ type TagProps = {
 };
 
 const tones = {
-  default: "border-line-strong text-fg",
-  accent: "border-garnet-ink/50 text-fg",
+  default: "border-line bg-surface text-fg",
+  accent: "border-accent/15 bg-surface text-accent",
   soft: "border-transparent bg-surface-2 text-fg",
 } as const;
 
@@ -17,7 +17,7 @@ export function Tag({ children, tone = "default", className }: TagProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-[3px] border px-3 py-1.5 text-sm leading-none whitespace-nowrap",
+        "inline-flex items-center rounded-full border px-3.5 py-1.5 text-sm leading-tight font-medium whitespace-nowrap",
         tones[tone],
         className,
       )}

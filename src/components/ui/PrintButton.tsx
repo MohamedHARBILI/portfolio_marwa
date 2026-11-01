@@ -13,7 +13,7 @@ export function PrintButton({ label, className }: PrintButtonProps) {
       type="button"
       onClick={() => window.print()}
       className={cn(
-        "inline-flex h-11 items-center gap-3 rounded-[3px] bg-indigo px-5 text-sm font-medium text-on-accent transition-opacity hover:opacity-90",
+        "inline-flex h-11 items-center gap-3 rounded-full bg-accent px-5 text-sm font-semibold text-on-accent shadow-soft transition-colors hover:bg-accent-strong",
         className,
       )}
     >

@@ -7,7 +7,7 @@ type RichProps = {
   emClassName?: string;
 };
 
-/** Renders content segments, setting `{ em }` segments in italics. */
+/** Renders content segments, setting `{ em }` segments in the accent color. */
 export function Rich({ text, emClassName }: RichProps) {
   return (
     <>
@@ -15,7 +15,7 @@ export function Rich({ text, emClassName }: RichProps) {
         typeof segment === "string" ? (
           <Fragment key={i}>{segment}</Fragment>
         ) : (
-          <em key={i} className={cn("italic", emClassName)}>
+          <em key={i} className={cn("text-accent not-italic", emClassName)}>
             {segment.em}
           </em>
         ),

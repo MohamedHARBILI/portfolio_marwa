@@ -5,14 +5,14 @@ export const MONOGRAM = {
   viewBox: "0 0 48 48",
   letters: ["M9 37V11l12 17 12-17v26", "M33 11h9", "M33 23h7"],
   signal: { cx: 41.5, cy: 36.5, r: 2.5 },
-  strokeWidth: 2.4,
+  strokeWidth: 3.4,
 } as const;
 
 type MonogramProps = {
   className?: string;
   /** When set, the SVG is exposed to assistive tech with this name. */
   title?: string;
-  /** Hide the garnet signal dot. */
+  /** Hide the accent signal dot. */
   plain?: boolean;
 };
 
@@ -36,7 +36,7 @@ export function Monogram({ className, title, plain = false }: MonogramProps) {
           strokeLinejoin="miter"
         />
       ))}
-      {plain ? null : <circle {...MONOGRAM.signal} className="fill-garnet-ink" />}
+      {plain ? null : <circle {...MONOGRAM.signal} className="fill-accent" />}
     </svg>
   );
 }
