@@ -1,6 +1,6 @@
 // Content model shared by the site and the /cv page.
 
-/** A heading or sentence where some segments are set in italics. */
+/** A heading or sentence where some segments are highlighted in the accent color. */
 export type RichSegment = string | { readonly em: string };
 export type RichText = readonly RichSegment[];
 
@@ -33,20 +33,15 @@ export interface UiStrings {
   readonly menuOpen: string;
   readonly menuClose: string;
   readonly menu: string;
-  readonly themeToLight: string;
-  readonly themeToDark: string;
   readonly viewProjects: string;
   readonly contactMe: string;
   readonly downloadCv: string;
-  readonly scroll: string;
-  readonly introSkip: string;
   readonly copyEmail: string;
   readonly copied: string;
   readonly copyFailed: string;
   readonly writeEmail: string;
   readonly backToTop: string;
   readonly viewCaseStudy: string;
-  readonly cursorView: string;
   readonly backToProjects: string;
   readonly nextProject: string;
   readonly linkPending: string;
@@ -57,6 +52,8 @@ export interface UiStrings {
   readonly footerNav: string;
   readonly elsewhere: string;
   readonly opensInNewTab: string;
+  readonly missions: string;
+  readonly keywords: string;
 }
 
 export interface ContactSection extends SectionMeta {
@@ -99,13 +96,6 @@ export interface Fact {
   readonly label: string;
 }
 
-export type CodeTokenKind = "keyword" | "name" | "type" | "prop" | "string" | "punct";
-
-export interface CodeToken {
-  readonly text: string;
-  readonly kind: CodeTokenKind;
-}
-
 export interface Profile {
   readonly firstName: string;
   readonly lastName: string;
@@ -120,14 +110,15 @@ export interface Profile {
     readonly coordinates: string;
   };
   readonly availability: { readonly label: string; readonly detail: string };
+  readonly photo: { readonly alt: string };
   readonly hero: {
-    readonly eyebrow: string;
+    readonly greeting: string;
     readonly lead: string;
-    /** Small spec sheet beside the name (label → value). */
+    /** Spec strip under the hero (label → value). */
     readonly specs: readonly Fact[];
+    /** Floating chips around the portrait. */
+    readonly chips: readonly Fact[];
   };
-  /** The line of code typed by the intro before it resolves into the name. */
-  readonly intro: { readonly code: readonly CodeToken[] };
   readonly about: SectionMeta & {
     readonly bio: readonly string[];
     readonly facts: readonly Fact[];
@@ -167,7 +158,7 @@ export interface PaymentFlowContent {
 }
 
 export type ProjectMotif = "commerce" | "network";
-export type ProjectAccent = "indigo" | "garnet";
+export type ProjectAccent = "blush" | "mist";
 
 export interface Project {
   readonly slug: string;

@@ -39,7 +39,7 @@ export const projects: readonly Project[] = [
     takeaway:
       "Faire circuler l’information d’un bout à l’autre — du formulaire à la requête SQL, puis de retour à l’écran — et comprendre comment chaque couche dépend des autres.",
     links: { demo: "TODO_DEMO_URL", code: "TODO_CODE_URL" },
-    accent: "indigo",
+    accent: "blush",
     motif: "commerce",
   },
   {
@@ -63,7 +63,7 @@ export const projects: readonly Project[] = [
     takeaway:
       "Livrer vite et en équipe : se répartir le travail, avancer en parallèle sur le front et le back, et faire converger le tout dans le temps imparti.",
     links: { demo: "TODO_DEMO_URL", code: "TODO_CODE_URL" },
-    accent: "garnet",
+    accent: "mist",
     motif: "network",
   },
 ];

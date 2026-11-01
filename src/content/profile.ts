@@ -17,28 +17,20 @@ export const profile: Profile = {
     label: "Ouverte aux opportunités",
     detail: "Je recherche un poste de développeuse web.",
   },
+  photo: { alt: "Portrait de Marwa Frej, souriante, en blazer bordeaux" },
   hero: {
-    eyebrow: "Portfolio — 2026",
-    lead: "Développeuse web full stack, je construis des applications complètes, de l’interface en React à la logique serveur en Laravel. En stage, j’ai découvert les coulisses des paiements en ligne.",
+    greeting: "Bonjour, je suis",
+    lead: "Je conçois et développe des applications web complètes, de l’interface en React à la logique serveur en Laravel. En stage, j’ai découvert les coulisses des paiements en ligne.",
     specs: [
       { label: "Spécialité", value: "Développement web full stack" },
       { label: "Stack", value: "React · Laravel · PHP · SQL" },
-      { label: "Domaine", value: "Paiements — Risques & Fraude" },
-      { label: "Basée à", value: "Casablanca, Maroc" },
+      { label: "Certificat", value: "SQL & PL/SQL" },
+      { label: "Langues", value: "Arabe · Français · Anglais · Turc" },
     ],
-  },
-  intro: {
-    code: [
-      { text: "const ", kind: "keyword" },
-      { text: "marwa", kind: "name" },
-      { text: " = ", kind: "punct" },
-      { text: "new ", kind: "keyword" },
-      { text: "Developer", kind: "type" },
-      { text: "({ ", kind: "punct" },
-      { text: "stack", kind: "prop" },
-      { text: ": ", kind: "punct" },
-      { text: "\"full\"", kind: "string" },
-      { text: " });", kind: "punct" },
+    chips: [
+      { label: "Basée à", value: "Casablanca, Maroc" },
+      { label: "Stage", value: "Risques & Fraude — VPS" },
+      { label: "Diplômée", value: "Développement Digital" },
     ],
   },
   about: {
@@ -46,6 +38,7 @@ export const profile: Profile = {
     index: "01",
     label: "À propos",
     title: ["Du premier pixel à la dernière ", { em: "requête SQL" }, "."],
+    intro: "Une développeuse qui aime comprendre toute la chaîne : ce que l’on voit à l’écran, et tout ce qui se passe derrière.",
     bio: [
       "Diplômée en Développement Digital Full Stack, je conçois et développe des applications web de bout en bout : des interfaces en HTML, CSS, JavaScript et React, une logique serveur en PHP et Laravel, des données bien rangées en SQL.",
       "Mon stage au sein de l’équipe Risques & Fraude de VPS m’a plongée dans l’envers du décor des paiements en ligne : PSP, 3-D Secure, tokenisation, transactions récurrentes.",
