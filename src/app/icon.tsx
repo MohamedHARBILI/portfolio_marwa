@@ -14,15 +14,15 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0B0B12",
-          borderRadius: 12,
+          background: "#8C1D40",
+          borderRadius: 999,
         }}
       >
         <svg width="48" height="48" viewBox={MONOGRAM.viewBox} fill="none">
           {MONOGRAM.letters.map((d) => (
-            <path key={d} d={d} stroke="#F3EFE6" strokeWidth={3.2} strokeLinecap="square" />
+            <path key={d} d={d} stroke="#FFFFFF" strokeWidth={3.2} strokeLinecap="square" />
           ))}
-          <circle cx={MONOGRAM.signal.cx} cy={MONOGRAM.signal.cy} r={3.2} fill="#EF7397" />
+          <circle cx={MONOGRAM.signal.cx} cy={MONOGRAM.signal.cy} r={3.2} fill="#F6E2E7" />
         </svg>
       </div>
     ),
