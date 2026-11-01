@@ -120,7 +120,12 @@ export interface Profile {
     readonly coordinates: string;
   };
   readonly availability: { readonly label: string; readonly detail: string };
-  readonly hero: { readonly eyebrow: string; readonly lead: string };
+  readonly hero: {
+    readonly eyebrow: string;
+    readonly lead: string;
+    /** Small spec sheet beside the name (label → value). */
+    readonly specs: readonly Fact[];
+  };
   /** The line of code typed by the intro before it resolves into the name. */
   readonly intro: { readonly code: readonly CodeToken[] };
   readonly about: SectionMeta & {

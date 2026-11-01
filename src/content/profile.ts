@@ -20,6 +20,12 @@ export const profile: Profile = {
   hero: {
     eyebrow: "Portfolio — 2026",
     lead: "Développeuse web full stack, je construis des applications complètes, de l'interface en React à la logique serveur en Laravel. En stage, j'ai découvert les coulisses des paiements en ligne.",
+    specs: [
+      { label: "Spécialité", value: "Développement web full stack" },
+      { label: "Stack", value: "React · Laravel · PHP · SQL" },
+      { label: "Domaine", value: "Paiements — Risques & Fraude" },
+      { label: "Basée à", value: "Casablanca, Maroc" },
+    ],
   },
   intro: {
     code: [

@@ -1,13 +1,13 @@
 # PROGRESS — Portfolio Marwa Frej
 
-**Prochaine action : Motion — écrire IntroHook (intro « Compile ») et le brancher sur la page d'accueil, puis vérifier visuellement (navigateur headless) Hero, PaymentFlow, Projets.**
+**Prochaine action : Vérifier le motion en navigateur (PaymentFlow épinglé, aperçu projets) et le mobile 360 px, puis pages projets /projets/[slug], page /cv imprimable, SEO (metadata, OG, JSON-LD, sitemap, robots, icon), not-found.**
 
 ## Checklist
 - [x] Initialisation Next.js, réglages, CLAUDE.md, PROGRESS.md, git, dépendances, arborescence
 - [x] Design system : tokens, polices, globals.css, composants ui/, monogramme, Header/Footer
 - [x] Contenu typé dans src/content à partir du CV (réécrit et vérifié)
 - [x] Toutes les sections en statique, responsive
-- [ ] Motion : SmoothScroll, IntroHook, Hero, Reveal, PaymentFlow, Cursor, Magnetic
+- [x] Motion : SmoothScroll, IntroHook, Hero, Reveal, PaymentFlow, Cursor, Magnetic
 - [ ] Pages projets, page CV imprimable, SEO, accessibilité, performance
 - [ ] QA finale : lint/types/build, relecture orthographique, 5 largeurs, reduced-motion, README, liste « À fournir »
 

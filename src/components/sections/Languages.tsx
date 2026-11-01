@@ -22,7 +22,7 @@ export function Languages() {
               <span
                 lang={language.lang}
                 dir={language.dir}
-                className="font-serif text-h2 leading-none text-fg"
+                className="self-start font-serif text-h2 leading-none text-fg"
               >
                 {language.native}
               </span>

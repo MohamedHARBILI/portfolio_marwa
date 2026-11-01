@@ -57,7 +57,7 @@
 
 @theme {
   /* Fluid type scale */
-  --text-mega: clamp(4.5rem, 0.5rem + 22vw, 15rem);
+  --text-mega: clamp(4.5rem, 0.5rem + 22vw, 17.5rem);
   --text-mega--line-height: 0.84;
   --text-mega--letter-spacing: -0.03em;
   --text-display: clamp(2.75rem, 0.9rem + 7vw, 8.5rem);

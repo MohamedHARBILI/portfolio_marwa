@@ -26,14 +26,24 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="flex flex-1 flex-col justify-center py-12 lg:py-16">
-            <div data-hero-fade>
-              <Badge pulse>{profile.availability.label}</Badge>
+          <div className="grid-editorial flex-1 content-center items-end gap-y-10 py-12 lg:py-16">
+            <div className="col-span-12 lg:col-span-9">
+              <div data-hero-fade>
+                <Badge pulse>{profile.availability.label}</Badge>
+              </div>
+              <h1 id="hero-title" data-hero-title className="mt-8 font-serif text-mega text-fg lg:mt-10">
+                <span className="block">{profile.firstName}</span>{" "}
+                <span className="block pl-[14%] italic lg:pl-[26%]">{profile.lastName}</span>
+              </h1>
             </div>
-            <h1 id="hero-title" data-hero-title className="mt-8 font-serif text-mega text-fg lg:mt-10">
-              <span className="block">{profile.firstName}</span>{" "}
-              <span className="block pl-[14%] italic lg:pl-[24%]">{profile.lastName}</span>
-            </h1>
+            <dl data-hero-fade className="hidden border-t border-line lg:col-span-3 lg:col-start-10 lg:block">
+              {profile.hero.specs.map((spec) => (
+                <div key={spec.label} className="flex flex-col gap-1 border-b border-line py-3">
+                  <dt className="eyebrow text-muted">{spec.label}</dt>
+                  <dd className="text-sm text-fg">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div className="grid-editorial items-end gap-y-8">

@@ -66,7 +66,9 @@ export function ProjectsList() {
               onFocus={() => setActive(i)}
               className="group/project grid-editorial items-center gap-y-5 py-8 lg:py-12"
             >
-              <BrowserMock project={project} className="col-span-12 desktop-hover:hidden md:col-span-8" />
+              <span className="col-span-12 mb-2 block desktop-hover:hidden">
+                <BrowserMock project={project} className="w-full md:w-2/3 lg:w-1/2" />
+              </span>
 
               <span className="eyebrow col-span-2 self-start pt-2 text-muted lg:col-span-1 lg:pt-4">
                 {project.index}
